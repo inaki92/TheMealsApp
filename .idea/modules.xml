@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/MealAppReview.iml" filepath="$PROJECT_DIR$/.idea/MealAppReview.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/MealsAppACE-EIT-AN.iml" filepath="$PROJECT_DIR$/.idea/MealsAppACE-EIT-AN.iml" />
+>>>>>>> refs/remotes/main/main
     </modules>
   </component>
 </project>
