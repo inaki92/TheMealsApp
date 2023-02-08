@@ -18,10 +18,11 @@ import java.util.concurrent.TimeUnit
 class NetworkModule {
 
     @Provides
-    fun providesMoshi(): Moshi =
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
+    fun providesMealsService(
+        retrofit: Retrofit
+    ): MealsAPI{
+        return retrofit.create(MealsAPI::class.java)
+    }
 
     @Provides
     fun providesRetrofit(
@@ -55,7 +56,8 @@ class NetworkModule {
     }
 
     @Provides
-    fun providesMealsService(retrofit: Retrofit): MealsAPI{
-        return retrofit.create(MealsAPI::class.java)
-    }
+    fun providesMoshi(): Moshi =
+        Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
 }

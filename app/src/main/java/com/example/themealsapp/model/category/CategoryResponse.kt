@@ -1,4 +1,4 @@
-package com.example.themealsapp.model
+package com.example.themealsapp.model.category
 
 
 import com.squareup.moshi.Json

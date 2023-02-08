@@ -1,4 +1,4 @@
-package com.example.themealsapp.model
+package com.example.themealsapp.model.ingredient
 
 
 import com.squareup.moshi.Json
@@ -11,7 +11,5 @@ data class Ingredient(
     @Json(name = "strDescription")
     val strDescription: String? = null,
     @Json(name = "strIngredient")
-    val strIngredient: String? = null,
-    @Json(name = "strType")
-    val strType: String? = null
+    val strIngredient: String? = null
 )

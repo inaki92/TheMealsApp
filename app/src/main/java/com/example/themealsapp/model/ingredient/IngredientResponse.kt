@@ -1,11 +1,11 @@
-package com.example.themealsapp.model
+package com.example.themealsapp.model.ingredient
 
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class MealResponse(
+data class IngredientResponse(
     @Json(name = "meals")
-    val meals: List<Meal>? = listOf()
+    val meals: List<Ingredient>? = listOf()
 )
