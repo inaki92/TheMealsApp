@@ -10,11 +10,11 @@ import com.example.themealsapp.data.local.entity.MealEntity
 interface MealDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMealInfos(infos: List<MealEntity>?)
+    suspend fun insertMeals(infos: List<MealEntity>?)
 
-    @Query("DELETE FROM mealinfoentity WHERE strMeal IN(:strMeal)")
-    suspend fun deleteMealInfos(strMeal: List<String?>?)
+    @Query("DELETE FROM mealentity WHERE strMeal IN(:strMeal)")
+    suspend fun deleteMeals(strMeal: List<String?>?)
 
-    @Query("SELECT * FROM mealinfoentity WHERE strMeal LIKE '%' || :strMeal || '%' ")
-    suspend fun getMealInfos(strMeal: String): List<MealEntity>
+    @Query("SELECT * FROM mealentity WHERE strMeal LIKE '%' || :strMeal || '%' ")
+    suspend fun getMeals(strMeal: String): List<MealEntity>
 }

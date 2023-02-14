@@ -112,7 +112,7 @@ data class MealDto(
     @SerializedName("strYoutube")
     val strYoutube: String? = null
 ){
-    fun toMealInfoEntity(): MealEntity {
+    fun toMealEntity(): MealEntity {
         return MealEntity(
             idMeal = idMeal ?: "",
             strMeal = strMeal ?: "",
