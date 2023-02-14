@@ -1,6 +1,6 @@
 package com.example.themealsapp.di
 
-import com.example.themealsapp.rest.MealsAPI
+import com.example.themealsapp.data.remote.MealsAPI
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -20,7 +20,7 @@ class NetworkModule {
     @Provides
     fun providesMealsService(
         retrofit: Retrofit
-    ): MealsAPI{
+    ): MealsAPI {
         return retrofit.create(MealsAPI::class.java)
     }
 

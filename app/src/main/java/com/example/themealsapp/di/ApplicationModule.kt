@@ -1,10 +1,65 @@
 package com.example.themealsapp.di
 
+import android.content.Context
+import android.net.ConnectivityManager
+import androidx.room.Room
+import com.example.themealsapp.data.local.MealDao
+import com.example.themealsapp.data.local.MealDatabase
+import com.example.themealsapp.data.remote.MealsAPI
+import com.example.themealsapp.data.repository.MealsRepository
+import com.example.themealsapp.data.repository.MealsRepositoryImpl
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
+
+//    @Provides
+//    @Singleton
+//    fun providesMealUseCase(
+//        repository: MealsRepository,
+//        networkState: NetworkState
+//    ): GetMealsByName {
+//        return GetMealsByName(repository, networkState)
+//    }
+
+    @Provides
+    @Singleton
+    fun providesMealRepository(
+        db: MealDatabase,
+        mealsAPI: MealsAPI
+    ): MealsRepository {
+        return MealsRepositoryImpl(mealDao = db.dao, mealsAPI = mealsAPI)
+    }
+
+    @Provides
+    @Singleton
+    fun providesMealDao(
+        db: MealDatabase
+    ): MealDao {
+        return db.dao
+    }
+
+    @Provides
+    @Singleton
+    fun providesMealDatabase(
+        @ApplicationContext context: Context
+    ): MealDatabase {
+        return Room.databaseBuilder(
+            context,
+            MealDatabase::class.java,
+            "themealsapp_db"
+        ).build()
+    }
+
+    @Provides
+    fun providesConnectivityManager(
+        @ApplicationContext context: Context
+    ): ConnectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 }

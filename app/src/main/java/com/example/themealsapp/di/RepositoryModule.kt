@@ -1,7 +1,7 @@
 package com.example.themealsapp.di
 
-import com.example.themealsapp.rest.MealsRepository
-import com.example.themealsapp.rest.MealsRepositoryImpl
+import com.example.themealsapp.data.repository.MealsRepository
+import com.example.themealsapp.data.repository.MealsRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
