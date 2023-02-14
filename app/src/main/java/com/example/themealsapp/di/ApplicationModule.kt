@@ -6,8 +6,10 @@ import androidx.room.Room
 import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.local.MealDatabase
 import com.example.themealsapp.data.remote.MealsAPI
-import com.example.themealsapp.data.repository.MealsRepository
-import com.example.themealsapp.data.repository.MealsRepositoryImpl
+import com.example.themealsapp.data.repository.MealRepositoryImpl
+import com.example.themealsapp.domain.repository.MealRepository
+import com.example.themealsapp.domain.use_case.GetMealsByName
+import com.example.themealsapp.utils.NetworkState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,22 +21,22 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
 
-//    @Provides
-//    @Singleton
-//    fun providesMealUseCase(
-//        repository: MealsRepository,
-//        networkState: NetworkState
-//    ): GetMealsByName {
-//        return GetMealsByName(repository, networkState)
-//    }
+    @Provides
+    @Singleton
+    fun providesMealInfoUseCase(
+        repository: MealRepository,
+        networkState: NetworkState
+    ): GetMealsByName {
+        return GetMealsByName(repository, networkState)
+    }
 
     @Provides
     @Singleton
     fun providesMealRepository(
         db: MealDatabase,
         mealsAPI: MealsAPI
-    ): MealsRepository {
-        return MealsRepositoryImpl(mealDao = db.dao, mealsAPI = mealsAPI)
+    ): MealRepository {
+        return MealRepositoryImpl(mealDao = db.dao, mealsAPI = mealsAPI)
     }
 
     @Provides
