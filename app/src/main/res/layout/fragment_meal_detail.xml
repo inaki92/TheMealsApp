@@ -1,14 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.view.MealDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/meal_image"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/MealImage" />
+    <TextView
+        android:id="@+id/meal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:text="@string/meal_title"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meal_image"
+        />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/ingredients_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:text="Ingredients title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meal_title"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ingredient_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_title"
+        android:text="@string/ingredient_list"
+        android:layout_marginBottom="40dp"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/instructions_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:text="Instructions title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_ingredient_list"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_instruction_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/instructions_title"
+        android:text="@string/instruction_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,6 +52,7 @@ data class MealEntity(
     val strMeasure18: String?,
     val strMeasure19: String?,
     val strMeasure20: String?,
+    val strMealThumb: String?,
 ){
     fun toMeal(): Meal {
         return Meal(
@@ -100,7 +101,8 @@ data class MealEntity(
             strMeasure17 = strMeasure17 ?: "",
             strMeasure18 = strMeasure18 ?: "",
             strMeasure19 = strMeasure19 ?: "",
-            strMeasure20 = strMeasure20 ?: ""
+            strMeasure20 = strMeasure20 ?: "",
+            strMealThumb = strMealThumb ?: "",
         )
     }
 }

@@ -3,7 +3,9 @@ package com.example.themealsapp.presentation.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.themealsapp.databinding.MealsItemBinding
+import com.bumptech.glide.Glide
+import com.example.themealsapp.R
+import com.example.themealsapp.databinding.RvMealItemBinding
 import com.example.themealsapp.domain.model.Meal
 
 class MealsListAdapter(
@@ -21,7 +23,7 @@ class MealsListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealSearchViewHolder =
         MealSearchViewHolder(
-            MealsItemBinding.inflate(
+            RvMealItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -38,13 +40,25 @@ class MealsListAdapter(
 
 
 class MealSearchViewHolder(
-    private val binding: MealsItemBinding
+    private val binding: RvMealItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Meal, onItemClick: (Meal) -> Unit) {
-        binding.mealName.text = item.strMeal
+        binding.mealImage.setImageResource(R.drawable.baseline_fastfood_24)
+        binding.mealTitle.text = item.strMeal
+        binding.mealArea.text = item.strArea
+        binding.mealCategory.text = item.strCategory
+        binding
 
         itemView.setOnClickListener {
             item.let { onItemClick }
         }
+
+        Glide
+            .with(binding.root)
+            .load(item.strMealThumb)
+            .centerCrop()
+            .placeholder(R.drawable.baseline_fastfood_24)
+            .error(R.drawable.baseline_no_food_24)
+            .into(binding.mealImage)
     }
 }

@@ -23,7 +23,7 @@ class MealSearchFragment : BaseFragment() {
 
     private val mealsListAdapter by lazy {
         MealsListAdapter {
-
+            findNavController().navigate(R.id.action_navigate_to_meal_detail)
         }
     }
 
