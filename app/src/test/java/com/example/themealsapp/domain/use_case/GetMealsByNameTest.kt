@@ -14,7 +14,7 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.TestScope
 import org.junit.Assert.*
 
 import org.junit.After
@@ -51,9 +51,10 @@ class GetMealsByNameTest {
     @Test
     fun `TEST TO VERIFY THAT LOCAL DATABASES ARE QUERIED WHEN INTERNET IS OFF`() {
         runBlocking {
-            //"Kumpir" = query / 52978
+            //"Corba" = query / 52977
             //AAA
             // ARRANGE/ASSIGN
+
             coEvery { mockMealsApi.searchMealByName(query = query1) } returns mockk {
                 every { isSuccessful } returns true
                 every { body() } returns MealDtoResponse(meals = mockk())

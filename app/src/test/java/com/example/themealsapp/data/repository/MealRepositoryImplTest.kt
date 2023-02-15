@@ -13,13 +13,16 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.TestResult
+import kotlinx.coroutines.test.TestScope
 import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import retrofit2.http.Body
 
 class MealRepositoryImplTest {
 
@@ -50,24 +53,23 @@ class MealRepositoryImplTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     suspend fun `TEST TO CONFIRM STRING MEAL NAME WILL RETRIEVE DATABASE INFO`() =
-    runBlocking{
+    runBlocking {
         //"Kumpir" = query / 52978
+        //"Corba" = query / 52977
         //AAA
         // ARRANGE/ASSIGN
-        coEvery { mockMealsApi.searchMealByName(query = query1) } returns mockk {
+            coEvery { mockMealsApi.searchMealByName(query = query1) } returns mockk {
                 every { isSuccessful } returns true
                 every { body() } returns MealDtoResponse(meals = mockk())
+            }
+
+            // ACT/ACTION
+            val uiStates = mutableListOf<UIState<Meal>>()
+            testRepo.getMealInfos(query1).collect {
+                iterator<UIState<Meal>> { }.forEach { e -> uiStates.add(e) }
+            }
+            //ASSERT
+            assert(uiStates.size == 2)
+            assert(uiStates[1] == UIState.SUCCESS::class.java)
         }
-
-        // ACT/ACTION
-        val uiStates = mutableListOf<UIState<Meal>>()
-        testRepo.getMealInfos(query1).collect {
-            iterator<UIState<Meal>> { }.forEach {e -> uiStates.add(e) }
-        }
-        //ASSERT
-        assert(uiStates.size == 2)
-        assert(uiStates[1] == UIState.SUCCESS::class.java)
-    }
-
-
     }

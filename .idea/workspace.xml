@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2166b9d2-8fe0-4742-a1e6-a057bdcd2666" name="Changes" comment="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/BaseFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/BaseFragmentTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="2166b9d2-8fe0-4742-a1e6-a057bdcd2666" name="Changes" comment="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
