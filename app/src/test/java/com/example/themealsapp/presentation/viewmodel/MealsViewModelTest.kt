@@ -13,13 +13,8 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before
@@ -58,7 +53,6 @@ class MealsViewModelTest {
         clearAllMocks()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST SEARCH METHODS FOR MEALSVIEWMODEL - IMPLEMENTS GETMEALSBYNAME WITH QUERY`() =
         runBlocking{

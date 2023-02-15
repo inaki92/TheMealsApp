@@ -12,9 +12,7 @@ import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestScope
 import org.junit.Assert.*
 
 import org.junit.After
@@ -47,7 +45,6 @@ class GetMealsByNameTest {
         clearAllMocks()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST TO VERIFY THAT LOCAL DATABASES ARE QUERIED WHEN INTERNET IS OFF`() {
         runBlocking {

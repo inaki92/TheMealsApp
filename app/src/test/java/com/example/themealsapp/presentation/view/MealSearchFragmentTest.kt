@@ -1,10 +1,8 @@
 package com.example.themealsapp.presentation.view
 
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.remote.MealsAPI
-import com.example.themealsapp.data.remote.model.meal.MealDtoResponse
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
@@ -16,12 +14,8 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before
@@ -60,7 +54,6 @@ class MealSearchFragmentTest {
         clearAllMocks()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST SEARCH MEALS FUNCTIONALITY FOR UISTATE AND ADAPTER UPDATEMEALS METHOD CALL`() =
         runBlocking{

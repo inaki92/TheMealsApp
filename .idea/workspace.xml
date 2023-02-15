@@ -4,58 +4,54 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2166b9d2-8fe0-4742-a1e6-a057bdcd2666" name="Changes" comment="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt" />
+    <list default="true" id="ec9c6d3f-503b-4c83-a87b-a916dae6e71f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/consultant/.android/avd/ACE_17.avd]" />
   <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Consultant &lt;consultant@sysadmins-macbook-pro.local&gt;" />
-      </list>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="feature/presentation_layer_eh" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2LIsnjIDWFoXePVhAb8CezbxHp4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2LmaA4gePyBXqK9qy9hcpwaVth0" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pucho/Work/MCS/Training/MidtermProject/MealsAppACE-EIT-AN&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="TheMealsApp.app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="TheMealsApp.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -117,20 +113,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2166b9d2-8fe0-4742-a1e6-a057bdcd2666" name="Changes" comment="" />
-      <created>1675570099957</created>
+      <changelist id="ec9c6d3f-503b-4c83-a87b-a916dae6e71f" name="Changes" comment="" />
+      <created>1676478566468</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1675570099957</updated>
+      <updated>1676478566468</updated>
     </task>
-    <task id="LOCAL-00001" summary="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt">
-      <created>1676469916507</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1676469916507</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,9 +131,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt" />
   </component>
 </project>

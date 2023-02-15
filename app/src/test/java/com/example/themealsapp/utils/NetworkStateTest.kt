@@ -7,6 +7,7 @@ import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
 import io.mockk.clearAllMocks
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 
@@ -37,6 +38,7 @@ class NetworkStateTest {
         clearAllMocks()
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST TO VERIFY THAT INTERNET IS OFF`() =
         runTest{

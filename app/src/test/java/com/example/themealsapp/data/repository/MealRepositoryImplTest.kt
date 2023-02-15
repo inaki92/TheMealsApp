@@ -12,12 +12,7 @@ import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestResult
-import kotlinx.coroutines.test.TestScope
-import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before
@@ -50,7 +45,6 @@ class MealRepositoryImplTest {
         clearAllMocks()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     suspend fun `TEST TO CONFIRM STRING MEAL NAME WILL RETRIEVE DATABASE INFO`() =
     runBlocking {
