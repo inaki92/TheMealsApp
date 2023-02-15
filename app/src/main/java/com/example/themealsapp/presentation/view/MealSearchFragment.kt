@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.themealsapp.R
 import com.example.themealsapp.databinding.FragmentMealSearchBinding
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.presentation.view.adapter.MealsListAdapter
@@ -57,7 +59,7 @@ class MealSearchFragment : BaseFragment() {
 
                 }
                 is UIState.SUCCESS<List<Meal>> -> {
-                    Log.d(TAG, "searchMeals: It brought the response to the fragment")
+                    Log.d(TAG, "searchMeals: It brought the reponse to the fragment")
                     mealsListAdapter.updateMeals(state.response)
                 }
                 is UIState.ERROR -> {
