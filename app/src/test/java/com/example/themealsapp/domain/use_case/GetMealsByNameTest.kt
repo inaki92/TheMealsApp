@@ -13,6 +13,7 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 
@@ -49,7 +50,7 @@ class GetMealsByNameTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST TO VERIFY THAT LOCAL DATABASES ARE QUERIED WHEN INTERNET IS OFF`() {
-        runTest {
+        runBlocking {
             //"Kumpir" = query / 52978
             //AAA
             // ARRANGE/ASSIGN

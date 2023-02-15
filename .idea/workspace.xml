@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2166b9d2-8fe0-4742-a1e6-a057bdcd2666" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/di/MealsApp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/di/NetworkModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/di/RepositoryModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/category/Category.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/category/CategoryResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/ingredient/Ingredient.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/ingredient/IngredientResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/meal/Meal.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/meal/MealResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/rest/MealsAPI.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/rest/MealsRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/utils/UIState.kt" afterDir="false" />
+    <list default="true" id="2166b9d2-8fe0-4742-a1e6-a057bdcd2666" name="Changes" comment="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/BaseFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/BaseFragmentTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,10 +26,24 @@
     </projectState>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Consultant &lt;consultant@sysadmins-macbook-pro.local&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/presentation_layer_eh" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2LIsnjIDWFoXePVhAb8CezbxHp4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -129,6 +132,14 @@
       <option name="presentableId" value="Default" />
       <updated>1675570099957</updated>
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt">
+      <created>1676469916507</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676469916507</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,5 +152,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'feature/presentation_layer_eh' into dev&#10;&#10;# Conflicts:&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/themealsapp/di/ApplicationModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/di/NetworkModule.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/presentation/view/MealSearchFragment.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/CustomExceptions.kt&#10;#&#9;app/src/main/java/com/example/themealsapp/utils/UIState.kt" />
   </component>
 </project>

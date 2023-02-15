@@ -18,6 +18,7 @@ import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 
@@ -61,7 +62,7 @@ class MealSearchFragmentTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST SEARCH MEALS FUNCTIONALITY FOR UISTATE AND ADAPTER UPDATEMEALS METHOD CALL`() =
-        runTest{
+        runBlocking{
 
             coEvery { viewModelScope.launch { testVm.meals.observe(response) {
                 every { UIState.SUCCESS<List<Meal>>(responseCase) } returns mockk("foo")

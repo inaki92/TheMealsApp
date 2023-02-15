@@ -7,6 +7,7 @@ import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
 import io.mockk.clearAllMocks
 import io.mockk.mockk
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 
 import org.junit.After
@@ -37,7 +38,8 @@ class NetworkStateTest {
     }
 
     @Test
-    fun `TEST TO VERIFY THAT INTERNET IS OFF`() {
+    fun `TEST TO VERIFY THAT INTERNET IS OFF`() =
+        runTest{
         assertFalse(!testNetwork.isInternetOn())
     }
 }

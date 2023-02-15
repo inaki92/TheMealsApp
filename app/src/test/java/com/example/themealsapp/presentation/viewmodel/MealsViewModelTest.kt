@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 
@@ -59,7 +60,7 @@ class MealsViewModelTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST SEARCH METHODS FOR MEALSVIEWMODEL - IMPLEMENTS GETMEALSBYNAME WITH QUERY`() =
-        runTest{
+        runBlocking{
 
             coEvery { viewModelScope.launch { testCase(query).collect {
                 every { UIState.SUCCESS<List<Meal>>(responseCase) } returns mockk("foo")

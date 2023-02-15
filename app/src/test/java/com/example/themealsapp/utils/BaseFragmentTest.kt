@@ -50,7 +50,7 @@ import org.junit.Test
 //    @OptIn(ExperimentalCoroutinesApi::class)
 //    @Test
 //    fun `TEST TO VERIFY ALERT ERROR DIALOG CAN BE CALLED FROM BASE FRAGMENT + CHILDREN`() =
-//        runTest{
+//        runBlocking{
 //            coEvery {  }
 //        assert(testVm.viewModelScope.launch { BaseFragment().showError() }.equals(String()))
 //    }
