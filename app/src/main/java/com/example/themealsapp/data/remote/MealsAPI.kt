@@ -9,7 +9,7 @@ interface MealsAPI {
 
     @GET(SEARCH)
     suspend fun searchMealByName(
-        @Query("s") query: String
+        @Query("s") strMeal: String
     ): Response<MealDtoResponse>
     // www.themealdb.com/api/json/v1/1/lookup.php?i=52772
     companion object {

@@ -18,18 +18,17 @@ class MealRepositoryImpl @Inject constructor(
     private val mealDao: MealDao
 ) : MealRepository {
 
-    override fun getMealInfos(query: String): Flow<UIState<List<Meal>>> = flow {
+    override fun getMealInfos(strMeal: String): Flow<UIState<List<Meal>>> = flow {
         emit(UIState.LOADING())
 
         try {
             Log.d(TAG, "getMealInfos: Fetching data from API")
-            val response = mealsAPI.searchMealByName(query)
+            val response = mealsAPI.searchMealByName(strMeal)
             if (response.isSuccessful) {
                 response.body()?.let { mealsResponse ->
                     val mealInfos = mealsResponse.meals
-                    mealDao.deleteMeals(mealInfos?.map { it.strMeal })
                     mealDao.insertMeals(mealInfos?.map { it.toMealEntity() })
-                    val newMealsInfos = mealDao.getMeals(query)
+                    val newMealsInfos = mealDao.getMealsByName(strMeal)
                     emit(UIState.SUCCESS(newMealsInfos.map { it.toMeal() }))
                 } ?: throw NullResponse()
             } else throw FailureResponse(response.errorBody()?.string())
@@ -38,12 +37,11 @@ class MealRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getMealInfosLocally(query: String): Flow<UIState<List<Meal>>> = flow {
+    override fun getMealInfosLocally(strMeal: String): Flow<UIState<List<Meal>>> = flow {
         try {
             Log.d(TAG, "getMealInfosLocally: Fetching data from local database")
-            val newMealsInfos = mealDao.getMeals(query)
+            val newMealsInfos = mealDao.getMealsByName(strMeal)
             emit(UIState.SUCCESS(newMealsInfos.map { it.toMeal() }))
-            throw NullResponse()
         } catch (e: Exception) {
             emit(UIState.ERROR(e))
         }
