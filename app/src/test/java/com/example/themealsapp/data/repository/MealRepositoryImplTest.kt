@@ -8,22 +8,17 @@ import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
 import com.example.themealsapp.utils.NetworkState
 import com.example.themealsapp.utils.UIState
-import io.mockk.clearAllMocks
-import io.mockk.coEvery
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.*
 import kotlinx.coroutines.runBlocking
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import retrofit2.http.Body
 
-class MealRepositoryImplTest {
+class MealRepositoryImplTest () {
 
     private lateinit var testRepo : MealRepository
 
-    private lateinit var testNetwork : NetworkState
+    private var testNetwork : NetworkState = mockk(relaxed = true)
 
     private lateinit var testCase2 : GetMealsByName
 
@@ -32,12 +27,15 @@ class MealRepositoryImplTest {
     private val mockMealsApi: MealsAPI = mockk(relaxed = true)
 
     private val query1 = "Kumpir"
+
+    val retObj = mockk<Void>()
 //    private val query2 = "Corba"
 
     @Before
     fun setUp() {
         testRepo = MealRepositoryImpl(mockMealsApi, mockMealDao)
         testCase2 = GetMealsByName(testRepo, testNetwork)
+
     }
 
     @After
@@ -45,8 +43,9 @@ class MealRepositoryImplTest {
         clearAllMocks()
     }
 
+//    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    suspend fun `TEST TO CONFIRM STRING MEAL NAME WILL RETRIEVE DATABASE INFO`() =
+    fun `TEST TO CONFIRM STRING MEAL NAME WILL RETRIEVE DATABASE INFO` () =
     runBlocking {
         //"Kumpir" = query / 52978
         //"Corba" = query / 52977
@@ -61,9 +60,11 @@ class MealRepositoryImplTest {
             val uiStates = mutableListOf<UIState<Meal>>()
             testRepo.getMealInfos(query1).collect {
                 iterator<UIState<Meal>> { }.forEach { e -> uiStates.add(e) }
+
             }
             //ASSERT
             assert(uiStates.size == 2)
             assert(uiStates[1] == UIState.SUCCESS::class.java)
+//        return@runBlocking retObj
         }
     }

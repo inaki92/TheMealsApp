@@ -27,9 +27,9 @@ class MealSearchFragmentTest {
 
     private lateinit var testVm: MealsViewModel
 
-    private lateinit var testRepo: MealRepository
+    private var testRepo: MealRepository  = mockk(relaxed = true)
 
-    private lateinit var testNetwork: NetworkState
+    private var testNetwork: NetworkState  = mockk(relaxed = true)
 
     private lateinit var testCase: GetMealsByName
 

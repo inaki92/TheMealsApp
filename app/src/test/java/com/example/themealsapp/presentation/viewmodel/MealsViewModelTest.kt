@@ -1,5 +1,6 @@
 package com.example.themealsapp.presentation.viewmodel
 
+import androidx.lifecycle.ViewModel
 import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.remote.MealsAPI
 import com.example.themealsapp.data.remote.model.meal.MealDtoResponse
@@ -8,27 +9,32 @@ import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
 import com.example.themealsapp.utils.NetworkState
 import com.example.themealsapp.utils.UIState
+import dagger.hilt.android.scopes.ViewModelScoped
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+
 
 class MealsViewModelTest {
 
-    private lateinit var viewModelScope: CoroutineScope
+    private var viewModelScope: CoroutineScope = mockk(relaxed = true)
 
     private lateinit var testVm: MealsViewModel
 
-    private lateinit var testRepo: MealRepository
+    private var testRepo: MealRepository = mockk(relaxed = true)
 
-    private lateinit var testNetwork: NetworkState
+    private var testNetwork: NetworkState  = mockk(relaxed = true)
 
     private lateinit var testCase: GetMealsByName
 
@@ -53,14 +59,18 @@ class MealsViewModelTest {
         clearAllMocks()
     }
 
+    @ExperimentalCoroutinesApi
+    @get: Rule
+    val vmTestDispatcher = VMTestDispatcher()
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `TEST SEARCH METHODS FOR MEALSVIEWMODEL - IMPLEMENTS GETMEALSBYNAME WITH QUERY`() =
-        runBlocking{
+        runTest{
 
-            coEvery { viewModelScope.launch { testCase(query).collect {
+            coEvery {   hint(ViewModelScoped::class)
+                viewModelScope.launch { testCase(query).collect {
                 every { UIState.SUCCESS<List<Meal>>(responseCase) } returns mockk("foo")
-            } } }
-
+            } }  }
 
         assert(testVm.onSeach(query) == mockk("foo"))
         assert(testVm.meals == mockk("foo"))

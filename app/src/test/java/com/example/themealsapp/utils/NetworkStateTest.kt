@@ -19,7 +19,7 @@ class NetworkStateTest {
 
     private lateinit var testRepo: MealRepository
 
-    private lateinit var testNetwork: NetworkState
+    private var testNetwork: NetworkState  = mockk(relaxed = true)
 
     private lateinit var testCase: GetMealsByName
 
