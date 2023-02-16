@@ -2,11 +2,12 @@ package com.example.themealsapp.data.repository
 
 import android.util.Log
 import com.example.themealsapp.data.local.MealDao
-import com.example.themealsapp.data.local.entity.mapToEntity
+import com.example.themealsapp.data.local.entity.mapFromDtoToEntity
+import com.example.themealsapp.data.local.entity.mapFromMealToEntity
 import com.example.themealsapp.data.remote.MealsAPI
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.domain.model.MealFiltered
-import com.example.themealsapp.domain.model.mapToMeal
+import com.example.themealsapp.domain.model.mapFromEntityToMeal
 import com.example.themealsapp.domain.model.mapToMealFiltered
 import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.utils.FailureResponse
@@ -31,9 +32,9 @@ class MealRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 response.body()?.let { mealsResponse ->
                     val mealInfos = mealsResponse.meals
-                    mealDao.insertMeals(mealInfos.mapToEntity())
+                    mealDao.insertMeals(mealInfos.mapFromDtoToEntity())
                     val newMealsInfos = mealDao.getMealsByName(strMeal)
-                    emit(UIState.SUCCESS(newMealsInfos.mapToMeal()))
+                    emit(UIState.SUCCESS(newMealsInfos.mapFromEntityToMeal()))
                 } ?: throw NullResponse()
             } else throw FailureResponse(response.errorBody()?.string())
         } catch (e: Exception) {
@@ -46,7 +47,7 @@ class MealRepositoryImpl @Inject constructor(
         try {
             Log.d(TAG, "getMealInfosLocally: Fetching data from local database")
             val mealInfos = mealDao.getMealsByName(strMeal)
-            emit(UIState.SUCCESS(mealInfos.mapToMeal()))
+            emit(UIState.SUCCESS(mealInfos.mapFromEntityToMeal()))
         } catch (e: Exception) {
             emit(UIState.ERROR(e))
         }
@@ -68,6 +69,30 @@ class MealRepositoryImpl @Inject constructor(
             Log.e(TAG, "getMealInfos: ${e}", )
             emit(UIState.ERROR(e))
         }
+    }
+
+    override fun getFavoriteMeals(): Flow<UIState<List<Meal>>> = flow {
+        try {
+            val mealInfos = mealDao.getFavoriteList().mapFromEntityToMeal()
+            emit(UIState.SUCCESS(mealInfos))
+        }catch (e: Exception) {
+            Log.e(TAG, "getMealInfos: ${e}", )
+            emit(UIState.ERROR(e))
+        }
+    }
+
+    override fun toggleFavoriteMealFlag(mealToggled: Meal): Flow<UIState<List<Meal>>> = flow {
+        try {
+            mealToggled.isFavorite = !mealToggled.isFavorite
+            val newMealItems = mutableListOf(mealToggled)
+            mealDao.insertMeals(newMealItems.mapFromMealToEntity())
+            emit(UIState.SUCCESS(mealDao.getFavoriteList().mapFromEntityToMeal()))
+        } catch (e: Exception) {
+            Log.e(TAG, "getMealInfos: ${e}", )
+            emit(UIState.ERROR(e))
+        }
+
+
     }
 
 

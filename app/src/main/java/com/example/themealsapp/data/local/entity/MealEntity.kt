@@ -1,13 +1,11 @@
 package com.example.themealsapp.data.local.entity
 
-import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.remote.model.meal.MealDto
 import com.example.themealsapp.domain.model.Meal
 import com.google.gson.Gson
-import com.google.gson.annotations.SerializedName
+import com.google.gson.reflect.TypeToken
 
 private const val TAG = "MealEntity"
 @Entity
@@ -20,10 +18,11 @@ data class MealEntity(
     val strMealThumb: String,
     val strYoutube: String,
     val ingredients: String,
-    val measurements: String
+    val measurements: String,
+    val isFavorite: Boolean = false
 )
 
-fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
+fun List<MealDto>?.mapFromDtoToEntity(): List<MealEntity>? =
     this?.map {
         val tempIngredients = mutableListOf<String?>()
         tempIngredients.add(it.strIngredient1)
@@ -91,5 +90,22 @@ fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
             strYoutube = it.strYoutube?: "not available",
             ingredients = gson.toJson(tempIngredients2) ?: "",
             measurements = gson.toJson(tempMeasurements2) ?: ""
+        )
+    }
+
+fun List<Meal>.mapFromMealToEntity(): List<MealEntity> =
+    this.map {
+        val gson = Gson()
+        MealEntity(
+            idMeal = it.idMeal,
+            strMeal = it.strMeal,
+            strArea = it.strArea,
+            strCategory = it.strCategory,
+            strInstructions = gson.toJson(it.instructions) ?: "",
+            strMealThumb = it.strMealThumb,
+            strYoutube = it.strYoutube,
+            ingredients = gson.toJson(it.ingredients) ?: "",
+            measurements = gson.toJson(it.measurements) ?: "",
+            isFavorite = it.isFavorite
         )
     }
