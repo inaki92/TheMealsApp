@@ -12,9 +12,6 @@ interface MealDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMeals(infos: List<MealEntity>?)
 
-    @Query("DELETE FROM mealentity WHERE strMeal IN(:strMeal)")
-    suspend fun deleteMeals(strMeal: List<String?>?)
-
     @Query("SELECT * FROM mealentity WHERE strMeal LIKE '%' || :strMeal || '%' ")
-    suspend fun getMeals(strMeal: String): List<MealEntity>
+    suspend fun getMealsByName(strMeal: String): List<MealEntity>
 }

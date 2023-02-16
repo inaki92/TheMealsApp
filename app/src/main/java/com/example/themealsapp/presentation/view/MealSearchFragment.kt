@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.themealsapp.R
 import com.example.themealsapp.databinding.FragmentMealSearchBinding
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.presentation.view.adapter.MealsListAdapter
@@ -41,10 +39,13 @@ class MealSearchFragment : BaseFragment() {
             )
             adapter = mealsListAdapter
         }
-        searchMeals()
+        searchMealsByName()
         binding.btnSearch.setOnClickListener {
+            if (!mealsViewModel.getNetworkState()){
+                showError("Couldn't access the network. Displaying results from Database") {}
+            }
             val searchQuery = binding.etSearch.text.toString()
-            mealsViewModel.onSeach(searchQuery)
+            mealsViewModel.onSearchMealsByName(searchQuery)
         }
 
 
@@ -52,7 +53,7 @@ class MealSearchFragment : BaseFragment() {
         return binding.root
     }
 
-    private fun searchMeals() {
+    private fun searchMealsByName() {
         mealsViewModel.meals.observe(viewLifecycleOwner) { state ->
             when (state){
                 is UIState.LOADING -> {
@@ -63,7 +64,8 @@ class MealSearchFragment : BaseFragment() {
                     mealsListAdapter.updateMeals(state.response)
                 }
                 is UIState.ERROR -> {
-                    showError(state.error.localizedMessage) {}
+                    Log.e(TAG, "searchMealsByName: UIState error: ", )
+                    showError(state.error.localizedMessage, ) {}
                 }
             }
         }

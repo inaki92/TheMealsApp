@@ -41,14 +41,6 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun providesMealDao(
-        db: MealDatabase
-    ): MealDao {
-        return db.dao
-    }
-
-    @Provides
-    @Singleton
     fun providesMealDatabase(
         @ApplicationContext context: Context
     ): MealDatabase {

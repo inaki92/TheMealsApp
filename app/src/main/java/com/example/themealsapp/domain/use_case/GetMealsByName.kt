@@ -11,9 +11,9 @@ class GetMealsByName @Inject constructor(
     private val repository: MealRepository,
     private val networkState: NetworkState
 ) {
-    operator fun invoke(query: String): Flow<UIState<List<Meal>>> {
-        if (query.isBlank() || !networkState.isInternetOn())
-            return repository.getMealInfosLocally(query)
-        return repository.getMealInfos(query)
+    operator fun invoke(strMeal: String): Flow<UIState<List<Meal>>> {
+        if (strMeal.isBlank() || !networkState.isInternetOn())
+            return repository.getMealInfosLocally(strMeal)
+        return repository.getMealInfos(strMeal)
     }
 }
