@@ -7,6 +7,7 @@ import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.remote.model.meal.MealDto
 import com.example.themealsapp.domain.model.Meal
 import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 
 private const val TAG = "MealEntity"
 @Entity
@@ -16,6 +17,7 @@ data class MealEntity(
     val strArea: String,
     val strCategory: String,
     val strInstructions: String,
+    val strMealThumb: String,
     val strYoutube: String,
     val ingredients: String,
     val measurements: String
@@ -85,6 +87,7 @@ fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
             strArea = it.strArea?: "not available",
             strCategory = it.strCategory?: "not available",
             strInstructions = gson.toJson(tempInstructions2) ?: "",
+            strMealThumb = it.strMealThumb?: "not available",
             strYoutube = it.strYoutube?: "not available",
             ingredients = gson.toJson(tempIngredients2) ?: "",
             measurements = gson.toJson(tempMeasurements2) ?: ""
