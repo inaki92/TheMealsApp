@@ -47,7 +47,6 @@ class MealSearchViewHolder(
         binding.mealTitle.text = item.strMeal
         binding.mealArea.text = item.strArea
         binding.mealCategory.text = item.strCategory
-        binding
 
         itemView.setOnClickListener {
             item.let { onItemClick }
