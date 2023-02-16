@@ -1,9 +1,14 @@
 package com.example.themealsapp.data.local.entity
 
+import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.themealsapp.data.local.MealDao
+import com.example.themealsapp.data.remote.model.meal.MealDto
 import com.example.themealsapp.domain.model.Meal
+import com.google.gson.Gson
 
+private const val TAG = "MealEntity"
 @Entity
 data class MealEntity(
     @PrimaryKey val idMeal: String,
@@ -12,95 +17,76 @@ data class MealEntity(
     val strCategory: String,
     val strInstructions: String,
     val strYoutube: String,
-    val strIngredient1: String,
-    val strIngredient2: String,
-    val strIngredient3: String,
-    val strIngredient4: String,
-    val strIngredient5: String,
-    val strIngredient6: String,
-    val strIngredient7: String,
-    val strIngredient8: String,
-    val strIngredient9: String,
-    val strIngredient10: String,
-    val strIngredient11: String,
-    val strIngredient12: String,
-    val strIngredient13: String,
-    val strIngredient14: String,
-    val strIngredient15: String,
-    val strIngredient16: String?,
-    val strIngredient17: String?,
-    val strIngredient18: String?,
-    val strIngredient19: String?,
-    val strIngredient20: String?,
-    val strMeasure1: String,
-    val strMeasure2: String,
-    val strMeasure3: String,
-    val strMeasure4: String,
-    val strMeasure5: String,
-    val strMeasure6: String,
-    val strMeasure7: String,
-    val strMeasure8: String,
-    val strMeasure9: String,
-    val strMeasure10: String,
-    val strMeasure11: String,
-    val strMeasure12: String,
-    val strMeasure13: String,
-    val strMeasure14: String,
-    val strMeasure15: String,
-    val strMeasure16: String?,
-    val strMeasure17: String?,
-    val strMeasure18: String?,
-    val strMeasure19: String?,
-    val strMeasure20: String?,
-){
-    fun toMeal(): Meal {
-        return Meal(
-            idMeal = idMeal,
-            strMeal = strMeal,
-            strArea = strArea,
-            strCategory = strCategory,
-            strInstructions = strInstructions,
-            strYoutube = strYoutube,
-            strIngredient1 = strIngredient1,
-            strIngredient2 = strIngredient2,
-            strIngredient3 = strIngredient3,
-            strIngredient4 = strIngredient4,
-            strIngredient5 = strIngredient5,
-            strIngredient6 = strIngredient6,
-            strIngredient7 = strIngredient7,
-            strIngredient8 = strIngredient8,
-            strIngredient9 = strIngredient9,
-            strIngredient10 = strIngredient10,
-            strIngredient11 = strIngredient11,
-            strIngredient12 = strIngredient12,
-            strIngredient13 = strIngredient13,
-            strIngredient14 = strIngredient14,
-            strIngredient15 = strIngredient15,
-            strIngredient16 = strIngredient16 ?: "",
-            strIngredient17 = strIngredient17 ?: "",
-            strIngredient18 = strIngredient18 ?: "",
-            strIngredient19 = strIngredient19 ?: "",
-            strIngredient20 = strIngredient20 ?: "",
-            strMeasure1 = strMeasure1,
-            strMeasure2 = strMeasure2,
-            strMeasure3 = strMeasure3,
-            strMeasure4 = strMeasure4,
-            strMeasure5 = strMeasure5,
-            strMeasure6 = strMeasure6,
-            strMeasure7 = strMeasure7,
-            strMeasure8 = strMeasure8,
-            strMeasure9 = strMeasure9,
-            strMeasure10 = strMeasure10,
-            strMeasure11 = strMeasure11,
-            strMeasure12 = strMeasure12,
-            strMeasure13 = strMeasure13,
-            strMeasure14 = strMeasure14,
-            strMeasure15 = strMeasure15,
-            strMeasure16 = strMeasure16 ?: "",
-            strMeasure17 = strMeasure17 ?: "",
-            strMeasure18 = strMeasure18 ?: "",
-            strMeasure19 = strMeasure19 ?: "",
-            strMeasure20 = strMeasure20 ?: ""
+    val ingredients: String,
+    val measurements: String
+)
+
+fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
+    this?.map {
+        val tempIngredients = mutableListOf<String?>()
+        tempIngredients.add(it.strIngredient1)
+        tempIngredients.add(it.strIngredient2)
+        tempIngredients.add(it.strIngredient3)
+        tempIngredients.add(it.strIngredient4)
+        tempIngredients.add(it.strIngredient5)
+        tempIngredients.add(it.strIngredient6)
+        tempIngredients.add(it.strIngredient7)
+        tempIngredients.add(it.strIngredient8)
+        tempIngredients.add(it.strIngredient9)
+        tempIngredients.add(it.strIngredient9)
+        tempIngredients.add(it.strIngredient10)
+        tempIngredients.add(it.strIngredient11)
+        tempIngredients.add(it.strIngredient12)
+        tempIngredients.add(it.strIngredient13)
+        tempIngredients.add(it.strIngredient14)
+        tempIngredients.add(it.strIngredient15)
+        tempIngredients.add(it.strIngredient16)
+        tempIngredients.add(it.strIngredient17)
+        tempIngredients.add(it.strIngredient18)
+        tempIngredients.add(it.strIngredient19)
+        tempIngredients.add(it.strIngredient20)
+
+        var tempIngredients2 = tempIngredients.filterNotNull().toMutableList()
+        tempIngredients2 = tempIngredients2.filter{x -> x != ""}.toMutableList()
+
+        val tempMeasurements = mutableListOf<String?>()
+        tempMeasurements.add(it.strMeasure1)
+        tempMeasurements.add(it.strMeasure2)
+        tempMeasurements.add(it.strMeasure3)
+        tempMeasurements.add(it.strMeasure4)
+        tempMeasurements.add(it.strMeasure5)
+        tempMeasurements.add(it.strMeasure6)
+        tempMeasurements.add(it.strMeasure7)
+        tempMeasurements.add(it.strMeasure8)
+        tempMeasurements.add(it.strMeasure9)
+        tempMeasurements.add(it.strMeasure10)
+        tempMeasurements.add(it.strMeasure11)
+        tempMeasurements.add(it.strMeasure12)
+        tempMeasurements.add(it.strMeasure13)
+        tempMeasurements.add(it.strMeasure14)
+        tempMeasurements.add(it.strMeasure15)
+        tempMeasurements.add(it.strMeasure16)
+        tempMeasurements.add(it.strMeasure17)
+        tempMeasurements.add(it.strMeasure18)
+        tempMeasurements.add(it.strMeasure19)
+        tempMeasurements.add(it.strMeasure20)
+
+        var tempMeasurements2 = tempMeasurements.filterNotNull().toMutableList()
+        tempMeasurements2 = tempIngredients2.filter{x -> x != ""}.toMutableList()
+
+        var tempInstructions = it.strInstructions
+        tempInstructions = tempInstructions?.replace("\r\n"," ")
+        val tempInstructions2 = tempInstructions?.split(". ")
+
+        val gson = Gson()
+        MealEntity(
+            idMeal = it.idMeal?: "id not provided",
+            strMeal = it.strMeal?: "not available",
+            strArea = it.strArea?: "not available",
+            strCategory = it.strCategory?: "not available",
+            strInstructions = gson.toJson(tempInstructions2) ?: "",
+            strYoutube = it.strYoutube?: "not available",
+            ingredients = gson.toJson(tempIngredients2) ?: "",
+            measurements = gson.toJson(tempMeasurements2) ?: ""
         )
     }
-}
