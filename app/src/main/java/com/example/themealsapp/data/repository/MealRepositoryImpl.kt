@@ -5,7 +5,9 @@ import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.local.entity.mapToEntity
 import com.example.themealsapp.data.remote.MealsAPI
 import com.example.themealsapp.domain.model.Meal
+import com.example.themealsapp.domain.model.MealFiltered
 import com.example.themealsapp.domain.model.mapToMeal
+import com.example.themealsapp.domain.model.mapToMealFiltered
 import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.utils.FailureResponse
 import com.example.themealsapp.utils.NullResponse
@@ -21,7 +23,7 @@ class MealRepositoryImpl @Inject constructor(
 ) : MealRepository {
 
     override fun getMealInfos(strMeal: String): Flow<UIState<List<Meal>>> = flow {
-        emit(UIState.LOADING())
+        emit(UIState.LOADING)
 
         try {
             Log.d(TAG, "getMealInfos: Fetching data from API")
@@ -49,5 +51,24 @@ class MealRepositoryImpl @Inject constructor(
             emit(UIState.ERROR(e))
         }
     }
+
+    override fun getFilteredMealByArea(strArea: String): Flow<UIState<List<MealFiltered>>> = flow {
+        emit(UIState.LOADING)
+
+        try {
+            Log.d(TAG, "getMealInfos: Fetching data from API")
+            val response = mealsAPI.filterRandomMealsByArea(strArea)
+            if (response.isSuccessful) {
+                response.body()?.let { mealsResponse ->
+                    val mealInfos = mealsResponse.meals.mapToMealFiltered()
+                    emit(UIState.SUCCESS(mealInfos?: emptyList()))
+                } ?: throw NullResponse()
+            } else throw FailureResponse(response.errorBody()?.string())
+        } catch (e: Exception) {
+            Log.e(TAG, "getMealInfos: ${e}", )
+            emit(UIState.ERROR(e))
+        }
+    }
+
 
 }

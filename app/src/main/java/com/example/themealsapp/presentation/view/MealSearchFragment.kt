@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themealsapp.databinding.FragmentMealSearchBinding
 import com.example.themealsapp.domain.model.Meal
+import com.example.themealsapp.domain.model.MealFiltered
 import com.example.themealsapp.presentation.view.adapter.MealsListAdapter
 import com.example.themealsapp.utils.BaseFragment
 import com.example.themealsapp.utils.UIState
@@ -62,6 +63,24 @@ class MealSearchFragment : BaseFragment() {
                 is UIState.SUCCESS<List<Meal>> -> {
                     Log.d(TAG, "searchMeals: It brought the reponse to the fragment")
                     mealsListAdapter.updateMeals(state.response)
+                }
+                is UIState.ERROR -> {
+                    Log.e(TAG, "searchMealsByName: UIState error: ", )
+                    showError(state.error.localizedMessage, ) {}
+                }
+            }
+        }
+    }
+
+    private fun filterMealsByCategory() {
+        mealsViewModel.filteredMeals.observe(viewLifecycleOwner) { state ->
+            when (state){
+                is UIState.LOADING -> {
+
+                }
+                is UIState.SUCCESS<List<MealFiltered>> -> {
+                    Log.d(TAG, "searchMeals: It brought the reponse to the fragment = ${state.response}")
+//                    mealsListAdapter.updateMeals(state.response)
                 }
                 is UIState.ERROR -> {
                     Log.e(TAG, "searchMealsByName: UIState error: ", )

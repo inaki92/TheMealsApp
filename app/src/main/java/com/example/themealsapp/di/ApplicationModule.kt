@@ -8,6 +8,7 @@ import com.example.themealsapp.data.local.MealDatabase
 import com.example.themealsapp.data.remote.MealsAPI
 import com.example.themealsapp.data.repository.MealRepositoryImpl
 import com.example.themealsapp.domain.repository.MealRepository
+import com.example.themealsapp.domain.use_case.GetFilteredMealsByArea
 import com.example.themealsapp.domain.use_case.GetMealsByName
 import com.example.themealsapp.utils.NetworkState
 import dagger.Module
@@ -28,6 +29,15 @@ class ApplicationModule {
         networkState: NetworkState
     ): GetMealsByName {
         return GetMealsByName(repository, networkState)
+    }
+
+    @Provides
+    @Singleton
+    fun providesFilteredNamesByAreaUseCase(
+        repository: MealRepository,
+        networkState: NetworkState
+    ): GetFilteredMealsByArea {
+        return GetFilteredMealsByArea(repository, networkState)
     }
 
     @Provides

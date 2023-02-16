@@ -10,6 +10,7 @@ data class Meal(
     val strArea: String,
     val strCategory: String,
     val instructions: List<String>,
+    val strMealThumb: String,
     val strYoutube: String,
     val ingredients: List<String>,
     val measurements: List<String>
@@ -25,6 +26,7 @@ fun List<MealEntity>.mapToMeal(): List<Meal> =
             strArea = it.strArea,
             strCategory = it.strCategory,
             instructions = gson.fromJson(it.strInstructions, stringType) ?: emptyList(),
+            strMealThumb = it.strMealThumb,
             strYoutube = it.strYoutube,
             ingredients = gson.fromJson(it.ingredients, stringType) ?: emptyList(),
             measurements = gson.fromJson(it.ingredients, stringType) ?: emptyList()
