@@ -2,8 +2,10 @@ package com.example.themealsapp.data.repository
 
 import android.util.Log
 import com.example.themealsapp.data.local.MealDao
+import com.example.themealsapp.data.local.entity.mapToEntity
 import com.example.themealsapp.data.remote.MealsAPI
 import com.example.themealsapp.domain.model.Meal
+import com.example.themealsapp.domain.model.mapToMeal
 import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.utils.FailureResponse
 import com.example.themealsapp.utils.NullResponse
@@ -27,12 +29,13 @@ class MealRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 response.body()?.let { mealsResponse ->
                     val mealInfos = mealsResponse.meals
-                    mealDao.insertMeals(mealInfos?.map { it.toMealEntity() })
+                    mealDao.insertMeals(mealInfos.mapToEntity())
                     val newMealsInfos = mealDao.getMealsByName(strMeal)
-                    emit(UIState.SUCCESS(newMealsInfos.map { it.toMeal() }))
+                    emit(UIState.SUCCESS(newMealsInfos.mapToMeal()))
                 } ?: throw NullResponse()
             } else throw FailureResponse(response.errorBody()?.string())
         } catch (e: Exception) {
+            Log.e(TAG, "getMealInfos: ${e}", )
             emit(UIState.ERROR(e))
         }
     }
@@ -40,8 +43,8 @@ class MealRepositoryImpl @Inject constructor(
     override fun getMealInfosLocally(strMeal: String): Flow<UIState<List<Meal>>> = flow {
         try {
             Log.d(TAG, "getMealInfosLocally: Fetching data from local database")
-            val newMealsInfos = mealDao.getMealsByName(strMeal)
-            emit(UIState.SUCCESS(newMealsInfos.map { it.toMeal() }))
+            val mealInfos = mealDao.getMealsByName(strMeal)
+            emit(UIState.SUCCESS(mealInfos.mapToMeal()))
         } catch (e: Exception) {
             emit(UIState.ERROR(e))
         }
