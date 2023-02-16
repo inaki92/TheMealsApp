@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.themealsapp.R
 import com.example.themealsapp.databinding.FragmentMealSearchBinding
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.domain.model.MealFiltered
@@ -22,6 +24,8 @@ class MealSearchFragment : BaseFragment() {
 
     private val mealsListAdapter by lazy {
         MealsListAdapter {
+            Log.d(TAG, "meal: ${it}: ")
+            mealsViewModel.selectedMealItem = it
             findNavController().navigate(R.id.action_navigate_to_meal_detail)
         }
     }
@@ -48,7 +52,6 @@ class MealSearchFragment : BaseFragment() {
             val searchQuery = binding.etSearch.text.toString()
             mealsViewModel.onSearchMealsByName(searchQuery)
         }
-
 
         // Inflate the layout for this fragment
         return binding.root

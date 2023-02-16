@@ -49,7 +49,7 @@ class MealSearchViewHolder(
         binding.mealCategory.text = item.strCategory
 
         itemView.setOnClickListener {
-            item.let { onItemClick }
+            item.let { onItemClick(it) }
         }
 
         Glide

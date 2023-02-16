@@ -28,6 +28,8 @@ class MealsViewModel @Inject constructor(
         onSearchMealsByName()
     }
 
+    lateinit var selectedMealItem : Meal
+
     private val _meals : MutableLiveData<UIState<List<Meal>>> = MutableLiveData(UIState.LOADING)
     val meals : MutableLiveData<UIState<List<Meal>>> get() = _meals
 
