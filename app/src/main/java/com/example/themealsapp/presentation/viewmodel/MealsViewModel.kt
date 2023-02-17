@@ -55,7 +55,7 @@ class MealsViewModel @Inject constructor(
         }
     }
 
-    fun onFilterMealsByArea(strMeal: String = "Chinese") {
+    fun onFilterMealsByArea(strMeal: String) {
         viewModelScope.launch {
             getFilteredMealsByArea(strMeal).collect { result ->
                 Log.d(TAG, "onFilterMealsByArea: $result")
