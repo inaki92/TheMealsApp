@@ -28,13 +28,12 @@ class MealRepositoryImplTest () {
 
     private val query1 = "Kumpir"
 
-    val retObj = mockk<Void>()
 //    private val query2 = "Corba"
 
     @Before
     fun setUp() {
         testRepo = MealRepositoryImpl(mockMealsApi, mockMealDao)
-        testCase2 = GetMealsByName(testRepo, testNetwork)
+//        testCase2 = GetMealsByName(testRepo, testNetwork)
 
     }
 
@@ -55,16 +54,13 @@ class MealRepositoryImplTest () {
                 every { isSuccessful } returns true
                 every { body() } returns MealDtoResponse(meals = mockk())
             }
-
             // ACT/ACTION
             val uiStates = mutableListOf<UIState<Meal>>()
             testRepo.getMealInfos(query1).collect {
                 iterator<UIState<Meal>> { }.forEach { e -> uiStates.add(e) }
-
             }
             //ASSERT
             assert(uiStates.size == 2)
             assert(uiStates[1] == UIState.SUCCESS::class.java)
-//        return@runBlocking retObj
         }
     }

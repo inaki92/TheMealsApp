@@ -72,8 +72,6 @@ class MealSearchFragmentTest {
             coEvery { viewModelScope.launch(viewModelScope.coroutineContext, CoroutineStart.LAZY) { testVm.meals.observe(response) {
                 every { UIState.SUCCESS<List<Meal>>(responseCase) } returns mockk("foo")
             } } }
-
-
             assert(testVm.onSeach(query) == mockk("foo"))
             assert(testVm.meals == mockk("foo"))
         }

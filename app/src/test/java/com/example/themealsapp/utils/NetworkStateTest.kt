@@ -42,6 +42,6 @@ class NetworkStateTest {
     @Test
     fun `TEST TO VERIFY THAT INTERNET IS OFF`() =
         runTest{
-        assertFalse(!testNetwork.isInternetOn())
+        assertFalse(testNetwork.isInternetOn())
     }
 }
