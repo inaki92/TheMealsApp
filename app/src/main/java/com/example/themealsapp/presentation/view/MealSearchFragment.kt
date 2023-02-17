@@ -53,6 +53,8 @@ class MealSearchFragment : BaseFragment() {
             mealsViewModel.onSearchMealsByName(searchQuery)
         }
 
+
+
         // Inflate the layout for this fragment
         return binding.root
     }

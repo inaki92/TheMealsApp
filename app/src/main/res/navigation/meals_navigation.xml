@@ -27,4 +27,11 @@
         android:label="Explore meals by country">
     </fragment>
 
+    <fragment
+        android:id="@+id/bookmark_fragment"
+        android:name="com.example.themealsapp.presentation.view.BookmarksFragment"
+        tools:layout="@layout/fragment_bookmarks"
+        android:label="Display your saved meals">
+    </fragment>
+
 </navigation>
