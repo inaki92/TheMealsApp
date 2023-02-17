@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.themealsapp.domain.model.Ingredient
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.domain.model.MealFiltered
 import com.example.themealsapp.domain.use_case.GetFilteredMealsByArea
@@ -29,6 +30,9 @@ class MealsViewModel @Inject constructor(
     }
 
     lateinit var selectedMealItem : Meal
+//    private val _selectedMealItem: MutableLiveData<UIState<Meal>> = MutableLiveData(UIState.LOADING)
+//    val selectedMealItem : MutableLiveData<UIState<Meal>> get() = _selectedMealItem
+    lateinit var selectedMealIngredients: Meal
 
     private val _meals : MutableLiveData<UIState<List<Meal>>> = MutableLiveData(UIState.LOADING)
     val meals : MutableLiveData<UIState<List<Meal>>> get() = _meals
@@ -56,4 +60,5 @@ class MealsViewModel @Inject constructor(
             }
         }
     }
+
 }

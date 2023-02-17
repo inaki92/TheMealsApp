@@ -45,8 +45,8 @@ class MealSearchViewHolder(
     fun bind(item: Meal, onItemClick: (Meal) -> Unit) {
         binding.mealImage.setImageResource(R.drawable.baseline_fastfood_24)
         binding.mealTitle.text = item.strMeal
-        binding.mealArea.text = item.strArea
-        binding.mealCategory.text = item.strCategory
+        binding.mealArea.text = "Area: ${item.strArea}"
+        binding.mealCategory.text = "Category: ${item.strCategory}"
 
         itemView.setOnClickListener {
             item.let { onItemClick(it) }

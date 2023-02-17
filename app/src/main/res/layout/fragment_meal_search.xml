@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="@string/meal_title"
+        android:text="Search for a meal: "
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textStyle="bold"

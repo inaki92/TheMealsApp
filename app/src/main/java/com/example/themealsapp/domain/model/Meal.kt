@@ -29,7 +29,7 @@ fun List<MealEntity>.mapToMeal(): List<Meal> =
             strMealThumb = it.strMealThumb,
             strYoutube = it.strYoutube,
             ingredients = gson.fromJson(it.ingredients, stringType) ?: emptyList(),
-            measurements = gson.fromJson(it.ingredients, stringType) ?: emptyList()
+            measurements = gson.fromJson(it.measurements, stringType) ?: emptyList()
         )
     }
 

@@ -74,7 +74,7 @@ fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
         tempMeasurements.add(it.strMeasure20)
 
         var tempMeasurements2 = tempMeasurements.filterNotNull().toMutableList()
-        tempMeasurements2 = tempIngredients2.filter{x -> x != ""}.toMutableList()
+        tempMeasurements2 = tempMeasurements2.filter{x -> x != ""}.toMutableList()
 
         var tempInstructions = it.strInstructions
         tempInstructions = tempInstructions?.replace("\r\n"," ")
