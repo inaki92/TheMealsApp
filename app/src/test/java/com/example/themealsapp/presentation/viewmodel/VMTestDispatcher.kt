@@ -2,18 +2,21 @@ package com.example.themealsapp.presentation.viewmodel
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.TestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
+import kotlinx.coroutines.test.*
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
-class VMTestDispatcher (private val dispatcher: TestDispatcher = StandardTestDispatcher()): TestWatcher() {
+open class VMTestDispatcher (private val dispatcher: TestDispatcher = UnconfinedTestDispatcher()): TestWatcher() {
 
-        override fun starting(description: Description) = Dispatchers.setMain(dispatcher)
+        public override fun starting(description: Description) {
+                super.starting(description)
+                Dispatchers.setMain(dispatcher)
+        }
 
-        override fun finished(description: Description) = Dispatchers.resetMain()
+        public override fun finished(description: Description) {
+                super.finished(description)
+                Dispatchers.resetMain()
+        }
 
 }

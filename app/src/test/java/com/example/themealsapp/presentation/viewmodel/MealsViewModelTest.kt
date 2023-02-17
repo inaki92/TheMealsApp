@@ -9,36 +9,41 @@ import com.example.themealsapp.domain.repository.MealRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
 import com.example.themealsapp.utils.NetworkState
 import com.example.themealsapp.utils.UIState
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import dagger.hilt.android.scopes.ViewModelScoped
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.Description
+import java.util.concurrent.Executor
 
 
 class MealsViewModelTest {
 
     private var viewModelScope: CoroutineScope = mockk(relaxed = true)
 
-    private lateinit var testVm: MealsViewModel
+    private var testVm: MealsViewModel = mockk(relaxed = true)
 
     private var testRepo: MealRepository = mockk(relaxed = true)
 
     private var testNetwork: NetworkState  = mockk(relaxed = true)
 
-    private lateinit var testCase: GetMealsByName
+    private var testCase: GetMealsByName = mockk(relaxed = true)
 
-    private lateinit var response: MealDtoResponse
+    private var response: MealDtoResponse = mockk(relaxed = true)
+
+    val mockMealsByName = mockk<GetMealsByName>(relaxed = true)
+
+    val mockOnSeach = testVm.onSeach(String())
 
     private val mockMealDao: MealDao = mockk(relaxed = true)
 
@@ -48,14 +53,19 @@ class MealsViewModelTest {
 
     private val responseCase = mutableListOf<Meal>()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setUp() {
+        every {
         testCase = GetMealsByName(testRepo, testNetwork)
         testVm = MealsViewModel(testCase)
-    }
+        vmTestDispatcher.starting(description = Description.createTestDescription("SET UP VMTEST", "MEALSVIEWMODEL"))
+    }}
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @After
     fun tearDown() {
+        vmTestDispatcher.finished(description = Description.createTestDescription("TEAR DOWN VMTEST", "MEALSVIEWMODEL"))
         clearAllMocks()
     }
 
@@ -67,10 +77,10 @@ class MealsViewModelTest {
     fun `TEST SEARCH METHODS FOR MEALSVIEWMODEL - IMPLEMENTS GETMEALSBYNAME WITH QUERY`() =
         runTest{
 
-            coEvery {   hint(ViewModelScoped::class)
-                viewModelScope.launch { testCase(query).collect {
+            coEvery {
+                viewModelScope.launch(viewModelScope.coroutineContext, CoroutineStart.LAZY) { testCase(query).collect {
                 every { UIState.SUCCESS<List<Meal>>(responseCase) } returns mockk("foo")
-            } }  }
+            }  } }
 
         assert(testVm.onSeach(query) == mockk("foo"))
         assert(testVm.meals == mockk("foo"))

@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec9c6d3f-503b-4c83-a87b-a916dae6e71f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/VMTestDispatcher.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/adapter/MSFTestDispatcher.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/category/Category.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/category/CategoryResponse.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/ingredient/Ingredient.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/ingredient/IngredientResponse.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/meal/Meal.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/model/meal/MealResponse.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/rest/MealsAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/rest/MealsAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/rest/MealsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/themealsapp/rest/MealsRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/data/repository/MealRepositoryImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/domain/use_case/GetMealsByNameTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/MealSearchFragmentTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/view/adapter/MealsListAdapterTest.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/MealsViewModelTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/BaseFragmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/BaseFragmentTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/utils/NetworkStateTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/VMTestDispatcher.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/themealsapp/presentation/viewmodel/VMTestDispatcher.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +43,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/presentation_layer_eh" />
+        <entry key="$PROJECT_DIR$" value="feature/UnitTest_cm" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,15 +56,16 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/Consultant/Documents/Training_01_17_23/MealAppReview"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Gradle.MealsViewModelTest.TEST SEARCH METHODS FOR MEALSVIEWMODEL - IMPLEMENTS GETMEALSBYNAME WITH QUERY">
     <configuration name="TheMealsApp.app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="TheMealsApp.app.main" />
@@ -135,7 +125,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MealRepositoryImplTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GetMealsByNameTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -148,7 +138,7 @@
           <list>
             <option value=":app:testDebugUnitTest" />
             <option value="--tests" />
-            <option value="&quot;com.example.themealsapp.data.repository.MealRepositoryImplTest&quot;" />
+            <option value="&quot;com.example.themealsapp.domain.use_case.GetMealsByNameTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -181,7 +171,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MealsViewModelTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MealsListAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -194,7 +184,7 @@
           <list>
             <option value=":app:testDebugUnitTest" />
             <option value="--tests" />
-            <option value="&quot;com.example.themealsapp.presentation.viewmodel.MealsViewModelTest&quot;" />
+            <option value="&quot;com.example.themealsapp.presentation.view.adapter.MealsListAdapterTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -253,10 +243,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.MealsViewModelTest.TEST SEARCH METHODS FOR MEALSVIEWMODEL - IMPLEMENTS GETMEALSBYNAME WITH QUERY" />
-        <item itemvalue="Gradle.MealsViewModelTest" />
-        <item itemvalue="Gradle.NetworkStateTest" />
         <item itemvalue="Gradle.MealSearchFragmentTest" />
-        <item itemvalue="Gradle.MealRepositoryImplTest (1)" />
+        <item itemvalue="Gradle.NetworkStateTest" />
+        <item itemvalue="Gradle.MealsListAdapterTest" />
+        <item itemvalue="Gradle.GetMealsByNameTest" />
       </list>
     </recent_temporary>
   </component>
