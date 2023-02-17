@@ -7,10 +7,12 @@ import com.bumptech.glide.Glide
 import com.example.themealsapp.R
 import com.example.themealsapp.databinding.RvMealItemBinding
 import com.example.themealsapp.domain.model.Meal
+import com.example.themealsapp.presentation.viewmodel.MealsViewModel
+import javax.inject.Inject
 
 class MealsListAdapter(
     private val itemSet: MutableList<Meal> = mutableListOf(),
-    private val onItemClick: (item: Meal) -> Unit
+    private val onItemClick: (item: Meal) -> Unit,
 ): RecyclerView.Adapter<MealSearchViewHolder>() {
 
     fun updateMeals(newItems: List<Meal>) {
@@ -50,6 +52,14 @@ class MealSearchViewHolder(
 
         itemView.setOnClickListener {
             item.let { onItemClick(it) }
+        }
+
+        binding.btnBookmarkToggle.setOnClickListener {
+            item.isFavorite = !item.isFavorite
+            if (item.isFavorite)
+                binding.btnBookmarkToggle.setImageResource(R.drawable.baseline_bookmark_24)
+            else
+                binding.btnBookmarkToggle.setImageResource(R.drawable.baseline_bookmark_border_24)
         }
 
         Glide

@@ -70,6 +70,7 @@ class MealsViewModel @Inject constructor(
                 setToggleMealFavoriteFlag(toggleMeal).collect { result ->
                     Log.d(TAG, "onFilterMealsByArea: $result")
                     _favoriteMeals.postValue(result)
+                    Log.d(TAG, "onFilterFavoriteMeals: meal Bookmark successfully changed")
                 }
             }
         } ?: run{

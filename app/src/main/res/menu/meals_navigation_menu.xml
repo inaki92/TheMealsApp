@@ -5,11 +5,11 @@
         android:title="Search"
         android:icon="@drawable/baseline_search_24">
     </item>
-<!--    <item-->
-<!--        android:id="@+id/bookmark_fragment"-->
-<!--        android:title="Bookmarks"-->
-<!--        android:icon="">-->
-<!--    </item>-->
+    <item
+        android:id="@+id/bookmark_fragment"
+        android:title="Bookmarks"
+        android:icon="@drawable/baseline_bookmark_border_24">
+    </item>
     <item
         android:id="@+id/explore_fragment"
         android:title="Explore"
