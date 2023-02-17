@@ -13,10 +13,11 @@ data class Meal(
     val strMealThumb: String,
     val strYoutube: String,
     val ingredients: List<String>,
-    val measurements: List<String>
+    val measurements: List<String>,
+    var isFavorite: Boolean
 )
 
-fun List<MealEntity>.mapToMeal(): List<Meal> =
+fun List<MealEntity>.mapFromEntityToMeal(): List<Meal> =
     this.map {
         val gson = Gson()
         val stringType = object : TypeToken<List<String>>() {}.type

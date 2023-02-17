@@ -4,11 +4,12 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.themealsapp.domain.model.Ingredient
 import com.example.themealsapp.domain.model.Meal
 import com.example.themealsapp.domain.model.MealFiltered
 import com.example.themealsapp.domain.use_case.GetFilteredMealsByArea
+import com.example.themealsapp.domain.use_case.GetMealsByFavorite
 import com.example.themealsapp.domain.use_case.GetMealsByName
+import com.example.themealsapp.domain.use_case.ToggleMealFavoriteFlag
 import com.example.themealsapp.utils.NetworkState
 import com.example.themealsapp.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +21,8 @@ private const val TAG = "MealsViewModel"
 class MealsViewModel @Inject constructor(
     private val getMealsByName: GetMealsByName,
     private val getFilteredMealsByArea: GetFilteredMealsByArea,
+    private val getMealsByFavorite: GetMealsByFavorite,
+    private val setToggleMealFavoriteFlag: ToggleMealFavoriteFlag,
     private val networkState: NetworkState
 ): ViewModel(){
     fun getNetworkState(): Boolean{
@@ -30,15 +33,15 @@ class MealsViewModel @Inject constructor(
     }
 
     lateinit var selectedMealItem : Meal
-//    private val _selectedMealItem: MutableLiveData<UIState<Meal>> = MutableLiveData(UIState.LOADING)
-//    val selectedMealItem : MutableLiveData<UIState<Meal>> get() = _selectedMealItem
-    lateinit var selectedMealIngredients: Meal
 
     private val _meals : MutableLiveData<UIState<List<Meal>>> = MutableLiveData(UIState.LOADING)
     val meals : MutableLiveData<UIState<List<Meal>>> get() = _meals
 
     private val _filteredMeals : MutableLiveData<UIState<List<MealFiltered>>> = MutableLiveData(UIState.LOADING)
     val filteredMeals : MutableLiveData<UIState<List<MealFiltered>>> get() = _filteredMeals
+
+    private val _favoriteMeals : MutableLiveData<UIState<List<Meal>>> = MutableLiveData(UIState.LOADING)
+    val favoriteMeals : MutableLiveData<UIState<List<Meal>>> get() = _favoriteMeals
 
 
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -52,7 +55,7 @@ class MealsViewModel @Inject constructor(
         }
     }
 
-    fun onFilterMealsByArea(strMeal: String = "Chinese") {
+    fun onFilterMealsByArea(strMeal: String) {
         viewModelScope.launch {
             getFilteredMealsByArea(strMeal).collect { result ->
                 Log.d(TAG, "onFilterMealsByArea: $result")
@@ -61,4 +64,21 @@ class MealsViewModel @Inject constructor(
         }
     }
 
+    fun onFilterFavoriteMeals(toggleMeal: Meal? = null) {
+        toggleMeal?.let {
+            viewModelScope.launch {
+                setToggleMealFavoriteFlag(toggleMeal).collect { result ->
+                    Log.d(TAG, "onFilterMealsByArea: $result")
+                    _favoriteMeals.postValue(result)
+                }
+            }
+        } ?: run{
+            viewModelScope.launch {
+                getMealsByFavorite().collect { result ->
+                    Log.d(TAG, "onFilterMealsByArea: $result")
+                    _favoriteMeals.postValue(result)
+                }
+            }
+        }
+    }
 }

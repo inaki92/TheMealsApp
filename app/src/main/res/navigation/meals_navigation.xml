@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/meal_search_fragment"
+    app:startDestination="@id/search_fragment"
     android:id="@+id/meals_navigation">
 
     <fragment
-        android:id="@+id/meal_search_fragment"
+        android:id="@+id/search_fragment"
         android:name="com.example.themealsapp.presentation.view.MealSearchFragment"
         tools:layout="@layout/fragment_meal_search"
         android:label="Meals Search by Name">
@@ -18,6 +18,13 @@
         android:id="@+id/meal_detail_fragment"
         android:name="com.example.themealsapp.presentation.view.MealDetailFragment"
         tools:layout="@layout/fragment_meal_detail">
+    </fragment>
+
+    <fragment
+        android:id="@+id/explore_fragment"
+        android:name="com.example.themealsapp.presentation.view.ExploreMealFragment"
+        tools:layout="@layout/fragment_explore_meal"
+        android:label="Explore meals by country">
     </fragment>
 
 </navigation>

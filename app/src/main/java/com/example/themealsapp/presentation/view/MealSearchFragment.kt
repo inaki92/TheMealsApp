@@ -74,22 +74,4 @@ class MealSearchFragment : BaseFragment() {
             }
         }
     }
-
-    private fun filterMealsByCategory() {
-        mealsViewModel.filteredMeals.observe(viewLifecycleOwner) { state ->
-            when (state){
-                is UIState.LOADING -> {
-
-                }
-                is UIState.SUCCESS<List<MealFiltered>> -> {
-                    Log.d(TAG, "searchMeals: It brought the reponse to the fragment = ${state.response}")
-//                    mealsListAdapter.updateMeals(state.response)
-                }
-                is UIState.ERROR -> {
-                    Log.e(TAG, "searchMealsByName: UIState error: ", )
-                    showError(state.error.localizedMessage, ) {}
-                }
-            }
-        }
-    }
 }
