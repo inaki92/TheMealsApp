@@ -30,9 +30,11 @@ class MealsViewModel @Inject constructor(
     }
     init {
         onSearchMealsByName()
+        onFilterFavoriteMeals()
     }
 
     lateinit var selectedMealItem : Meal
+    private var currentSearchQuery = ""
 
     private val _meals : MutableLiveData<UIState<List<Meal>>> = MutableLiveData(UIState.LOADING)
     val meals : MutableLiveData<UIState<List<Meal>>> get() = _meals
@@ -48,6 +50,7 @@ class MealsViewModel @Inject constructor(
 
     fun onSearchMealsByName(strMeal: String = "") {
         Log.d(TAG, "onSearchMealsByName: Entered in the ViewModel")
+        currentSearchQuery = strMeal
         viewModelScope.launch {
             getMealsByName(strMeal).collect { result ->
                 _meals.postValue(result)
@@ -68,9 +71,9 @@ class MealsViewModel @Inject constructor(
         toggleMeal?.let {
             viewModelScope.launch {
                 setToggleMealFavoriteFlag(toggleMeal).collect { result ->
-                    Log.d(TAG, "onFilterMealsByArea: $result")
-                    _favoriteMeals.postValue(result)
                     Log.d(TAG, "onFilterFavoriteMeals: meal Bookmark successfully changed")
+                    _favoriteMeals.postValue(result)
+                    onSearchMealsByName(currentSearchQuery)
                 }
             }
         } ?: run{

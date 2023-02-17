@@ -16,7 +16,7 @@ interface MealDao {
     @Query("SELECT * FROM mealentity WHERE strMeal LIKE '%' || :strMeal || '%' ")
     suspend fun getMealsByName(strMeal: String): List<MealEntity>
 
-    @Query("SELECT * FROM mealentity WHERE isFavorite = true")
+    @Query("SELECT * FROM mealentity WHERE isFavorite = 1")
     suspend fun getFavoriteList(): List<MealEntity>
 
 }

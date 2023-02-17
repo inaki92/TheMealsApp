@@ -32,6 +32,9 @@
         android:name="com.example.themealsapp.presentation.view.BookmarksFragment"
         tools:layout="@layout/fragment_bookmarks"
         android:label="Display your saved meals">
+        <action
+            android:id="@+id/action_bookmark_fragment_to_meal_detail_fragment"
+            app:destination="@id/meal_detail_fragment" />
     </fragment>
 
 </navigation>

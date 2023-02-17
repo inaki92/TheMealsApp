@@ -14,7 +14,7 @@ data class Meal(
     val strYoutube: String,
     val ingredients: List<String>,
     val measurements: List<String>,
-    var isFavorite: Boolean
+    var isFavorite: Int
 )
 
 fun List<MealEntity>.mapFromEntityToMeal(): List<Meal> =
@@ -30,7 +30,8 @@ fun List<MealEntity>.mapFromEntityToMeal(): List<Meal> =
             strMealThumb = it.strMealThumb,
             strYoutube = it.strYoutube,
             ingredients = gson.fromJson(it.ingredients, stringType) ?: emptyList(),
-            measurements = gson.fromJson(it.measurements, stringType) ?: emptyList()
+            measurements = gson.fromJson(it.measurements, stringType) ?: emptyList(),
+            isFavorite = it.isFavorite
         )
     }
 

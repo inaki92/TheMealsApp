@@ -54,13 +54,6 @@ class MealSearchViewHolder(
             item.let { onItemClick(it) }
         }
 
-        binding.btnBookmarkToggle.setOnClickListener {
-            item.isFavorite = !item.isFavorite
-            if (item.isFavorite)
-                binding.btnBookmarkToggle.setImageResource(R.drawable.baseline_bookmark_24)
-            else
-                binding.btnBookmarkToggle.setImageResource(R.drawable.baseline_bookmark_border_24)
-        }
 
         Glide
             .with(binding.root)

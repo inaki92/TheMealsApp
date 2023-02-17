@@ -19,7 +19,7 @@ data class MealEntity(
     val strYoutube: String,
     val ingredients: String,
     val measurements: String,
-    val isFavorite: Boolean = false
+    val isFavorite: Int = 0
 )
 
 fun List<MealDto>?.mapFromDtoToEntity(): List<MealEntity>? =

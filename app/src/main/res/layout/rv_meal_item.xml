@@ -50,15 +50,6 @@
             android:text="Category"
             android:layout_toRightOf="@+id/meal_image"
             android:layout_below="@+id/meal_area" />
-        <ImageButton
-            android:id="@+id/btn_bookmark_toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/baseline_bookmark_border_24"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" >
-        </ImageButton>
 
 
     </RelativeLayout>

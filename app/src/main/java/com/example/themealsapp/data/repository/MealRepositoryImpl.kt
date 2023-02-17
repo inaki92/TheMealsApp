@@ -33,7 +33,7 @@ class MealRepositoryImpl @Inject constructor(
                 response.body()?.let { mealsResponse ->
                     val mealInfos = mealsResponse.meals
                     mealDao.insertMeals(mealInfos.mapFromDtoToEntity())
-                    val newMealsInfos = mealDao.getMealsByName(strMeal)
+                    val newMealsInfos = mealDao.getMealsByName(strMeal).sortedBy { it.strMeal }
                     emit(UIState.SUCCESS(newMealsInfos.mapFromEntityToMeal()))
                 } ?: throw NullResponse()
             } else throw FailureResponse(response.errorBody()?.string())
@@ -61,7 +61,7 @@ class MealRepositoryImpl @Inject constructor(
             val response = mealsAPI.filterRandomMealsByArea(strArea)
             if (response.isSuccessful) {
                 response.body()?.let { mealsResponse ->
-                    val mealInfos = mealsResponse.meals.mapToMealFiltered()
+                    val mealInfos = mealsResponse.meals.mapToMealFiltered()!!.sortedBy { it.strMeal }
                     emit(UIState.SUCCESS(mealInfos?: emptyList()))
                 } ?: throw NullResponse()
             } else throw FailureResponse(response.errorBody()?.string())
@@ -74,7 +74,7 @@ class MealRepositoryImpl @Inject constructor(
     override fun getFavoriteMeals(): Flow<UIState<List<Meal>>> = flow {
         try {
             val mealInfos = mealDao.getFavoriteList().mapFromEntityToMeal()
-            emit(UIState.SUCCESS(mealInfos))
+            emit(UIState.SUCCESS(mealInfos.sortedBy { it.strMeal }))
         }catch (e: Exception) {
             Log.e(TAG, "getMealInfos: ${e}", )
             emit(UIState.ERROR(e))
@@ -83,10 +83,9 @@ class MealRepositoryImpl @Inject constructor(
 
     override fun toggleFavoriteMealFlag(mealToggled: Meal): Flow<UIState<List<Meal>>> = flow {
         try {
-            mealToggled.isFavorite = !mealToggled.isFavorite
             val newMealItems = mutableListOf(mealToggled)
             mealDao.insertMeals(newMealItems.mapFromMealToEntity())
-            emit(UIState.SUCCESS(mealDao.getFavoriteList().mapFromEntityToMeal()))
+            emit(UIState.SUCCESS(mealDao.getFavoriteList().mapFromEntityToMeal().sortedBy { it.strMeal }))
         } catch (e: Exception) {
             Log.e(TAG, "getMealInfos: ${e}", )
             emit(UIState.ERROR(e))
