@@ -1,12 +1,11 @@
 package com.example.themealsapp.data.local.entity
 
-import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.themealsapp.data.local.MealDao
 import com.example.themealsapp.data.remote.model.meal.MealDto
 import com.example.themealsapp.domain.model.Meal
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 private const val TAG = "MealEntity"
 @Entity
@@ -16,12 +15,14 @@ data class MealEntity(
     val strArea: String,
     val strCategory: String,
     val strInstructions: String,
+    val strMealThumb: String,
     val strYoutube: String,
     val ingredients: String,
-    val measurements: String
+    val measurements: String,
+    val isFavorite: Int = 0
 )
 
-fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
+fun List<MealDto>?.mapFromDtoToEntity(): List<MealEntity>? =
     this?.map {
         val tempIngredients = mutableListOf<String?>()
         tempIngredients.add(it.strIngredient1)
@@ -72,7 +73,7 @@ fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
         tempMeasurements.add(it.strMeasure20)
 
         var tempMeasurements2 = tempMeasurements.filterNotNull().toMutableList()
-        tempMeasurements2 = tempIngredients2.filter{x -> x != ""}.toMutableList()
+        tempMeasurements2 = tempMeasurements2.filter{x -> x != ""}.toMutableList()
 
         var tempInstructions = it.strInstructions
         tempInstructions = tempInstructions?.replace("\r\n"," ")
@@ -85,8 +86,26 @@ fun List<MealDto>?.mapToEntity(): List<MealEntity>? =
             strArea = it.strArea?: "not available",
             strCategory = it.strCategory?: "not available",
             strInstructions = gson.toJson(tempInstructions2) ?: "",
+            strMealThumb = it.strMealThumb?: "not available",
             strYoutube = it.strYoutube?: "not available",
             ingredients = gson.toJson(tempIngredients2) ?: "",
             measurements = gson.toJson(tempMeasurements2) ?: ""
+        )
+    }
+
+fun List<Meal>.mapFromMealToEntity(): List<MealEntity> =
+    this.map {
+        val gson = Gson()
+        MealEntity(
+            idMeal = it.idMeal,
+            strMeal = it.strMeal,
+            strArea = it.strArea,
+            strCategory = it.strCategory,
+            strInstructions = gson.toJson(it.instructions) ?: "",
+            strMealThumb = it.strMealThumb,
+            strYoutube = it.strYoutube,
+            ingredients = gson.toJson(it.ingredients) ?: "",
+            measurements = gson.toJson(it.measurements) ?: "",
+            isFavorite = it.isFavorite
         )
     }

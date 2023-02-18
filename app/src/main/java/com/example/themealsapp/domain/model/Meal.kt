@@ -10,12 +10,14 @@ data class Meal(
     val strArea: String,
     val strCategory: String,
     val instructions: List<String>,
+    val strMealThumb: String,
     val strYoutube: String,
     val ingredients: List<String>,
-    val measurements: List<String>
+    val measurements: List<String>,
+    var isFavorite: Int
 )
 
-fun List<MealEntity>.mapToMeal(): List<Meal> =
+fun List<MealEntity>.mapFromEntityToMeal(): List<Meal> =
     this.map {
         val gson = Gson()
         val stringType = object : TypeToken<List<String>>() {}.type
@@ -25,9 +27,11 @@ fun List<MealEntity>.mapToMeal(): List<Meal> =
             strArea = it.strArea,
             strCategory = it.strCategory,
             instructions = gson.fromJson(it.strInstructions, stringType) ?: emptyList(),
+            strMealThumb = it.strMealThumb,
             strYoutube = it.strYoutube,
             ingredients = gson.fromJson(it.ingredients, stringType) ?: emptyList(),
-            measurements = gson.fromJson(it.ingredients, stringType) ?: emptyList()
+            measurements = gson.fromJson(it.measurements, stringType) ?: emptyList(),
+            isFavorite = it.isFavorite
         )
     }
 
